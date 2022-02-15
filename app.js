@@ -34,13 +34,14 @@ app.get('/detail', function (req, res) {
 })
 app.post('/detail', function (req, res) {
   // Crea un objeto de preferencia
-  console.log(req.body)
+  console.log("empieza",req.body)
+  console.log("termina")
   let preference = {
     items: [
       {
         id: 1234,
         title: req.body.title,
-        description: "Dispositivo móvil de Tienda e-commerce",
+        description: req.body.description,
         url_image: req.body.image,
         unit_price: +req.body.price,
         quantity: 1,
@@ -72,12 +73,8 @@ app.post('/detail', function (req, res) {
     },
     auto_return: "approved",
     payment_methods: {
-      excluded_payment_methods: [
-        {
-          "id": "amex"
-        },
-
-      ],
+      excluded_payment_methods: [{id: "amex"}],
+      excluded_payment_types: [{ id: 'atm' }],
       installments: 6
     },
     notification_url: "https://tamiisoledad-mp-commerce-node.herokuapp.com/notification?source_news=webhooks"
@@ -89,7 +86,7 @@ app.post('/detail', function (req, res) {
   mercadopago.preferences
     .create(preference)
     .then(function (response) {
-      console.log(response)
+      console.log("response preferencia",response)
       res.redirect(response.body.init_point)
 
     })
@@ -112,7 +109,7 @@ app.get('/notification', function (req, res) {
   res.render('notification')
 })
  app.post('/notification', function (req, res) {
-   console.log(req.body)
+   console.log("notificacion",req.body)
    
    var payment_data = {
     transaction_amount: Number(req.body.transactionAmount),
