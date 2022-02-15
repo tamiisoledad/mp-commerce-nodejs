@@ -41,7 +41,7 @@ app.post('/detail', function (req, res) {
         title: req.body.title,
         description: "Dispositivo móvil de Tienda e-commerce",
         url_image: req.body.image,
-        unit_price: req.body.price,
+        unit_price: +req.body.price,
         quantity: 1,
       },
     ],
