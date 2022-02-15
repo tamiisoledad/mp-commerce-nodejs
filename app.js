@@ -41,11 +41,11 @@ app.post('/detail', function (req, res) {
         title: req.body.title,
         description: "Dispositivo móvil de Tienda e-commerce",
         url_image: req.body.image,
-        unit_price: +req.body.price,
+        unit_price: req.body.price,
         quantity: 1,
       },
     ],
-    external_reference: "tamysoledad2009-6@hotmail.com",
+    external_reference: "tamiisoledad4@gmail.com",
     payer: {
       name: "Lalo",
       surname: "Landa",
