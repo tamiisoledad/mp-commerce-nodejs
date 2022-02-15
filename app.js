@@ -34,6 +34,7 @@ app.get('/detail', function (req, res) {
 })
 app.post('/detail', function (req, res) {
   // Crea un objeto de preferencia
+  console.log(req.body)
   let preference = {
     items: [
       {
@@ -88,6 +89,7 @@ app.post('/detail', function (req, res) {
   mercadopago.preferences
     .create(preference)
     .then(function (response) {
+      console.log(response)
       res.redirect(response.body.init_point)
 
     })
